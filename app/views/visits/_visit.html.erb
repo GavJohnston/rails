@@ -1,0 +1,72 @@
+
+
+
+<table class="table table-striped table-dark table-bordered" id="sizing-addon2">
+  <td><strong>Created <%= time_ago_in_words(visit.created_at) %> ago</strong></td>
+  <tbody>
+    <tr>
+      <th scope="row">Last Appointment:</th>
+      <td><strong><%= visit.visitdate %></strong></td>
+
+    </tr>
+    <tr>
+      <th scope="row">Next Appointment Date:</th>
+      <td><strong><%= visit.visitnextdate %></strong></td>
+
+    </tr>
+    <tr>
+      <th scope="row">Issue:</th>
+      <td><strong><%= visit.visitissue %></strong></td>
+
+    </tr>
+    <tr>
+      <th scope="row">Resolution:</th>
+      <td><strong><%= visit.visitresolution %></strong></td>
+
+    </tr>
+    <tr>
+      <th scope="row">Addional Info:</th>
+      <td><strong><%= visit.visitimage %></strong></td>
+    </tr>
+    
+
+    <tr>
+
+    <td><p><%= image_tag visit.image.url(:medium) %></p>
+
+    </td>
+    </tr>
+    
+    <tr>
+      <th scope="row">Doctor Name:</th>
+      <td><strong><%= visit.visitdoctor %></strong></td>
+
+    </tr>
+    <tr>
+      <th scope="row">Prescription:</th>
+      <td><strong><%= visit.visitprescription %></strong></td>
+
+    </tr>
+
+
+
+
+
+ <tr>
+     
+  <td colspan="2"><strong>
+<%= link_to 'Show', customer_visit_path(visit), class: 'btn btn-info btn-lg btn-block' %></strong>
+ </td>
+</tr>
+ <tr>
+  <td colspan="2"><strong>
+ <%= link_to 'Delete Visit', [visit.customer, visit],
+ method: :delete,
+ data: { confirm: 'Are you sure?' } , class: 'btn btn-info btn-lg btn-block'%></strong>
+ </td>
+</tr>
+  </tbody>
+</table>
+
+
+ 

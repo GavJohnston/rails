@@ -1,0 +1,125 @@
+<!---------------------- NAVBAR START ------------------------->
+<nav class="navbar navbar-dark bg-dark" style="background-color: #3b3e45;">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href=/>Home</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <li> <%= render 'devise/menu/registration_items' %></li>
+
+</ul>
+<b>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to 'Back to patients', customers_path(@customer_id) %></li>       
+        <li><%= render 'devise/menu/login_items' %></li>
+        
+      </ul></b>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<!---------------------- NAVBAR END ------------------------->
+
+<!---------------------SLIDING TITLE--------------------------->
+<div class="fixed-top">
+
+
+<div class="slide-left">
+<h1>Editing Patient</h1>
+</div>
+
+<!------------------------------------------------------------->
+<!--------------------EDITING PARAMETERS----------------------->
+<%= form_for :customer, url: customer_path(@customer), method: :patch do |f| %>
+
+ <% if @customer.errors.any? %>
+ <div id="error_explanation">
+ <h2>
+ <%= pluralize(@customer.errors.count, "error") %> prohibited
+ this customer from being saved:
+ </h2>
+ <ul>
+ <% @customer.errors.full_messages.each do |msg| %>
+ <li><%= msg %></li>
+ <% end %>
+ </ul>
+ </div>
+ <% end %>
+<!------------------------------------------------------------->
+
+
+<!-------------------------PATIENT FORM INPUTS------------------>
+
+<p>
+<div class="input-group input-group-lg">
+   <span class="input-group-addon" id="sizing-addon1">
+ Patient First name</span>
+   <input type="text" class="form-control" placeholder="Customer First Name" aria-describedby="sizing-addon1" <%= f.text_field :customerfirst_name%>
+</div>
+</p>
+
+<p>
+<div class="input-group input-group-lg">
+   <span class="input-group-addon" id="sizing-addon1">
+ Patient Last name</span>
+   <input type="text" class="form-control" placeholder="Customer Last Name" aria-describedby="sizing-addon1" <%= f.text_field :customerlast_name%>
+</div>
+</p>
+
+
+<p>
+<div class="input-group input-group-lg">
+   <span class="input-group-addon" id="sizing-addon1">
+ Patient Email</span>
+   <input type="text" class="form-control" placeholder="customeremail" aria-describedby="sizing-addon1" <%= f.text_field :customeremail%>
+</div>
+</p>
+
+
+<p>
+<div class="input-group input-group-lg">
+   <span class="input-group-addon" id="sizing-addon1">
+ Patient Mobile number </span>
+   <input type="text" class="form-control" placeholder="Customer Number" aria-describedby="sizing-addon1" <%= f.text_field :customernumber%>
+</div>
+</p>
+
+<p>
+<div class="input-group input-group-lg">
+   <span class="input-group-addon" id="sizing-addon1">
+ Patient Doctor</span>
+   <input type="text" class="form-control" placeholder="Customer Address" aria-describedby="sizing-addon1" <%= f.text_field :customeraddress%>
+</div>
+</p>
+
+
+
+<p>
+<div class="input-group input-group-lg">
+   <span class="input-group-addon" id="sizing-addon1">
+ Patient Date of birth</span>
+   <input type="date" class="form-control" placeholder="Customer dob" aria-describedby="sizing-addon1" <%= f.date_field :customerdob%>
+</div>
+</p>
+ <p>
+ <button type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+
+ </p>
+<% end %>
+<!------------------------------------------------------------->
+
+<!-----------------------BUTTONS---------------------->
+<td><strong><%= link_to 'Back', customers_path(@customer_id), class: 'btn btn-primary btn-sm ' %></strong></td>
+</div>
+
+<!------------------------------------------------------------->

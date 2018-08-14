@@ -1,0 +1,83 @@
+<%= form_for :customer, url: customers_path do |f| %>
+<% if @customer.errors.any? %>
+ <div id="error_explanation"> 
+ <h2>
+ <%= pluralize(@customer.errors.count, "error") %> prohibited
+ this article from being saved:
+ </h2>
+ <ul>
+ <% @customer.errors.full_messages.each do |msg| %>
+ <li><%= msg %></li>
+ <% end %>
+ </ul>
+ </div>
+ <% end %>
+
+
+<div class="fixed-top">
+<h1>Adding customer</h1>
+
+
+
+<p>
+<div class="input-group input-group-lg">
+   <span class="input-group-addon" id="sizing-addon1">
+ Patient name</span>
+   <input type="text" class="form-control" placeholder="Patient First Name" aria-describedby="sizing-addon1" <%= f.text_field :customerfirst_name%>
+</div>
+</p>
+
+<p>
+<div class="input-group input-group-lg">
+   <span class="input-group-addon" id="sizing-addon1">
+ Patient Last name</span>
+   <input type="text" class="form-control" placeholder="Patient Last Name" aria-describedby="sizing-addon1" <%= f.text_field :customerlast_name%>
+</div>
+</p>
+
+
+<p>
+<div class="input-group input-group-lg">
+   <span class="input-group-addon" id="sizing-addon1">
+ Patient Email Address</span>
+   <input type="text" class="form-control" placeholder="Patient Email Addresss" aria-describedby="sizing-addon1" <%= f.text_field :customeremail%>
+</div>
+</p>
+
+
+<p>
+<div class="input-group input-group-lg">
+   <span class="input-group-addon" id="sizing-addon1">
+ Patient Mobile number</span>
+   <input type="text" class="form-control" placeholder="Patient Mobile Number" aria-describedby="sizing-addon1" <%= f.text_field :customernumber%>
+</div>
+</p>
+
+<p>
+<div class="input-group input-group-lg">
+   <span class="input-group-addon" id="sizing-addon1">
+ Patient Doctors Name </span>
+   <input type="body" class="form-control" placeholder="Patient Doctor Name" aria-describedby="sizing-addon1" <%= f.text_area :customeraddress , autofocus: true, autocomplete: "email"%>
+</div>
+</p>
+
+
+<p>
+<div class="input-group input-group-lg">
+   <span class="input-group-addon" id="sizing-addon1">
+ Patient Date of birth</span>
+   <input type="date" class="form-control" placeholder="Patient Date of Birth" aria-describedby="sizing-addon1" <%= f.date_field :customerdob,:value => Time.now.strftime('%Y-%m-%d') %>
+</div>
+</p>
+
+
+
+
+ <p>
+<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+ </p>
+
+<% end %>
+
+<%= link_to 'Back', customers_path %>
+</div>

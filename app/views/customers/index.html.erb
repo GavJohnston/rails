@@ -1,0 +1,89 @@
+<!---------------------- NAVBAR START ------------------------->
+<nav class="navbar navbar-dark bg-dark" style="background-color: #393d44;">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href=/>Home</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+
+        <li> <%= render 'devise/menu/registration_items' %></li>
+
+</ul>
+      <form class="navbar-form navbar-left">
+        <%= form_tag customers_path, :method => 'get' do %>
+<%= text_field_tag :search, params[:search] %>
+
+<button type="Search" class="btn btn-primary">Search</button>
+
+<% end %>
+
+      </form>
+      <b>
+      <ul class="nav navbar-nav navbar-right">
+<li><%= render 'devise/menu/login_items' %></li>
+      </ul></b>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<!---------------------- NAVBAR END ------------------------->
+
+<!---------------------- SLIDING TITLE ------------------------->
+<div class="slide-up">
+<h1>Listing Patients</h1>
+</div>
+<!------------------------------------------------------------->
+
+<!---------------------- ADD NEW PATIENT BUTTON ------------------------->
+<%= link_to 'Add a New Patient', new_customer_path, class: 'btn btn-info btn-lg btn-block' %> 
+<!------------------------------------------------------------->
+
+<!---------------------PATIENT DETAILS------------------->
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">First name</th>
+      <th scope="col">last name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Doctor Name</th>
+      <th scope="col">Date of Birth</th>
+
+    </tr>
+  </thead>
+  <tbody>
+ <% @customers.each do |customer| %>
+ <tr>
+ <td><strong><%= customer.customerfirst_name %></strong></td>
+  <td><strong><%= customer.customerlast_name %></strong></td>
+   <td><strong><%= customer.customeremail %></strong></td>
+ <td><strong><%= customer.customernumber %></strong></td>
+  <td><strong><%= customer.customeraddress %></strong></td>
+   <td><strong><%= customer.customerdob %></strong></td>
+      <td><strong>Created <%= time_ago_in_words(customer.created_at) %> ago</strong></td>
+   
+<!------------------------------------------------------------->
+
+
+
+<!------------------SHOW/EDIT/DELETE BUTTONS------------------------>
+
+
+ <td><strong><%= link_to 'Show', customer_path(customer), class: 'btn btn-info btn-lg btn-block' %></strong></td>
+ <td><strong><%= link_to 'Edit', edit_customer_path(customer), class: 'btn btn-info btn-lg btn-block' %></strong></td> 
+ <td><strong><%= link_to 'Destroy', customer_path(customer), 
+ method: :delete,
+ data: { confirm: 'Are you sure?' }, class: 'btn btn-info btn-lg btn-block' %></strong></td> 
+ </tr>
+   </tbody>
+ <% end %>
+</table> 

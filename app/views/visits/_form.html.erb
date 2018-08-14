@@ -1,0 +1,51 @@
+<%= form_for([@customer, @customer.visits.build]) do |f| %>
+
+<p>
+<div class="input-group input-group-lg">
+   <span class="input-group-addon" id="sizing-addon1">
+ Visit Name</span>
+   <input type="text" class="form-control" placeholder="Visit Name" aria-describedby="sizing-addon1" <%= f.text_field :visitname%>
+</div>
+</p>
+  <p>
+ <%= f.label :Current_date %><br>
+ <%= f.date_field :visitdate %>
+ </p>
+  <p>
+ <%= f.label :Next_appointment_date %><br>
+ <%= f.date_field :visitnextdate %>
+ </p>
+  <p>
+ <%= f.label :Issue %><br>
+ <%= f.text_field :visitissue %>
+ </p>
+  <p>
+ <%= f.label :Resolution %><br>
+ <%= f.text_area :visitresolution %>
+ </p>
+   <p>
+ <%= f.label :Additional_info %><br>
+ <%= f.text_field :visitimage %>
+ </p>
+ 
+  <p>
+ <%= f.label :Image %><br>
+ <%= f.file_field :image %>
+</p>
+ 
+ 
+  <p>
+ <%= f.label :Doctor_name %><br>
+ <%= f.text_field :visitdoctor %>
+ </p>
+  <p>
+ <%= f.label :Prescription %><br>
+ <%= f.text_field :visitprescription %>
+ </p>
+ 
+
+
+
+ <p>
+ <%= f.submit %>
+ </p>

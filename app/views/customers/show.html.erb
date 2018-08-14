@@ -1,0 +1,184 @@
+<!---------------------- NAVBAR START ------------------------->
+<nav class="navbar navbar-dark bg-dark" style="background-color: #3b3e45;">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href=/>Home</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <li> <%= render 'devise/menu/registration_items' %></li>
+
+</ul>
+<b>
+      <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to 'Back to patients', customers_path(@customer) %></li>
+        <li><%= render 'devise/menu/login_items' %></li>
+        
+      </ul></b>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<!---------------------- NAVBAR END ------------------------->
+
+
+<!----------------------PATIENT DETAILS-------------------------->
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Full Name</th>
+
+      <th scope="col">Email Address</th>
+	  <th scope="col">Mobile Number</th>
+      <th scope="col">Doctor Name</th>
+      <th scope="col">Date Of Birth</th>
+      
+
+
+    </tr>
+  </thead>
+  <tbody>
+
+ <tr>
+       <td>
+<%= @customer.full_name %>
+  </td>
+
+ <td><%= @customer.customeremail %></td>
+ <td><%= @customer.customernumber %></td>
+ <td><%= @customer.full_name2 %></td>
+ <td><%= @customer.customerdob %></td>
+ <td><%= @customer.created_at.strftime("%A, %B %e") %></td>
+
+ </tbody>
+ </table>
+
+ <!------------------------------------------------------------->
+ 
+ 
+ <!----------------------SLIDING TITLE---------------------->
+<div class="slide-up">
+<h2><b>VISITS</b></h2>
+</div>
+<!------------------------------------------------------------->
+
+
+<!------------------------VISITS DETAILS RENDERED--------------->
+<%= render @customer.visits %>
+
+<!------------------------------------------------------------->
+
+<!--------------------ADDING NEW VISIT------------------------->
+<div class="fixed-top">
+<p>
+ <a class="btn btn-primary btn-lg btn-block" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Add A new Visit
+  </a>
+ 
+<div class="collapse" id="collapseExample">
+  <div class="card card-body"> 
+ 
+<h3>Add a Visit:</h3>
+<%= form_for([@customer, @customer.visits.build]) do |f| %>
+
+
+
+<p>
+<div class="input-group input-group-lg">
+   <span class="input-group-addon" id="sizing-addon1">
+ Current Date</span>
+   <input type="date" class="form-control" placeholder="Current date" aria-describedby="sizing-addon1" <%= f.date_field :visitdate, :value => Time.now.strftime('%Y-%m-%d') %>
+</div>
+</p>
+
+
+<p>
+<div class="input-group input-group-lg">
+   <span class="input-group-addon" id="sizing-addon1">
+ Next Appointment</span>
+   <input type="date" class="form-control" placeholder="Next Appointment Date" aria-describedby="sizing-addon1" <%= f.date_field :visitnextdate, :value => Time.now.strftime('%Y-%m-%d') %>
+
+</div>
+</p>
+
+
+
+<p>
+<div class="input-group input-group-lg">
+   <span class="input-group-addon" id="sizing-addon1">
+ Issue</span>
+   <input type="text" class="form-control" placeholder="Issue" aria-describedby="sizing-addon1" <%= f.text_field :visitissue%>
+</div>
+</p>
+
+
+<p>
+<div class="input-group input-group-lg">
+   <span class="input-group-addon" id="sizing-addon1">
+ Resolution</span>
+   <input type="text" class="form-control" placeholder="Resolution" aria-describedby="sizing-addon1" <%= f.text_area :visitresolution%>
+</div>
+</p>
+
+
+
+<p>
+<div class="input-group input-group-lg">
+   <span class="input-group-addon" id="sizing-addon1">Additional info
+ </span>
+   <input type="text" class="form-control" placeholder="Additional info" aria-describedby="sizing-addon1" <%= f.text_field :visitimage %>
+</div>
+</p>
+
+
+
+
+<p>
+<div class="input-group input-group-lg">
+   <span class="input-group-addon" id="sizing-addon1">
+ Doctor name</span>
+   <input type="text" class="form-control" placeholder="Doctor name" aria-describedby="sizing-addon1" <%= f.text_field :visitdoctor%>
+</div>
+</p>
+<p>
+<div class="input-group input-group-lg">
+   <span class="input-group-addon" id="sizing-addon1">
+ Prescription</span>
+   <input type="text" class="form-control" placeholder="Prescription" aria-describedby="sizing-addon1" <%= f.text_field :visitprescription%>
+</div>
+</p>
+
+<p>
+<div class="input-group input-group-lg">
+
+    <%= f.file_field :image %>
+</div>
+</p>
+
+
+
+ <p>
+ <button type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+
+ </p>
+ </div>
+ </div>
+ </p>
+ </div>
+ </br>
+<% end %> 
+<!------------------------------------------------------------->
+
+<!-----------------BUTTONS-------------------------------------->
+
+<td><strong><%= link_to 'Edit', edit_customer_path(@customer), class: 'btn btn-primary btn-sm ' %></strong></td> | <td><strong><%= link_to 'Back', customers_path(@customer), class: 'btn btn-primary btn-sm ' %></strong></td>

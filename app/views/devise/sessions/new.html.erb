@@ -1,0 +1,73 @@
+<div class="fixed-top">
+
+</br>
+
+
+<div class="slide-left">
+<h1>Welcome to your online patient tracking system to login please click below</h1>
+</div>
+
+
+
+<p>
+ <a class="btn btn-primary btn-lg btn-block" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Click to login
+  </a>
+ 
+<div class="collapse" id="collapseExample">
+  <div class="card card-body"> 
+ 
+
+
+
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  
+  <p>
+    
+<div class="input-group input-group-lg">
+   <span class="input-group-addon" id="sizing-addon1">
+ Email </span>
+   <input type="email" class="form-control" placeholder="email" aria-describedby="sizing-addon1" <%= f.email_field :email%>
+</div>
+</p>
+  
+  
+    <p>
+    
+<div class="input-group input-group-lg">
+   <span class="input-group-addon" id="sizing-addon1">
+ Password </span>
+   <input type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1" <%= f.password_field :password%>
+</div>
+</p>
+<p>
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+    </p>
+  <% end -%>
+
+ <p>
+<button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+ </p>
+  
+  
+  <p>
+  <div class="btn btn-primary btn-lg btn-block" href="#collapseExample" role="button" aria-expanded="false">
+    <%= render 'devise/menu/registration_items' %>
+  </div>
+  </p>
+<% end %>
+
+<%= render "devise/shared/links" %>
+
+ </p>
+ </div>
+ </div>
+ </p>
+ </div>
+
+

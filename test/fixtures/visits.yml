@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  visitdate: 2018-07-18
+  visitnextdate: 2018-07-18
+  visitissue: MyString
+  visitresolution: MyText
+  visitimage: 
+  visitdoctor: MyString
+  visitprescription: MyString
+  customer: one
+
+two:
+  visitdate: 2018-07-18
+  visitnextdate: 2018-07-18
+  visitissue: MyString
+  visitresolution: MyText
+  visitimage: 
+  visitdoctor: MyString
+  visitprescription: MyString
+  customer: two

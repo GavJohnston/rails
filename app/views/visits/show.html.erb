@@ -1,0 +1,128 @@
+<!---------------------- NAVBAR START ------------------------->
+<nav class="navbar navbar-dark bg-dark" style="background-color: #3b3e45;">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href=/>Home</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <li> <%= render 'devise/menu/registration_items' %></li>
+
+</ul>
+<b>
+      <ul class="nav navbar-nav navbar-right">
+        
+        <li><%= link_to 'Back to Patient', customer_path %></li>
+        <li><%= render 'devise/menu/login_items' %></li>
+        
+      </ul></b>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+<!---------------------- NAVBAR END ------------------------->
+
+<!--------------------DATE STAMP---------------------------->
+<p> <td><%= @visit.created_at.strftime("%a %d/%m/%y") %></td></p>
+<!------------------------------------------------------------->
+
+<!-------------------VISIT DETAILS----------------------------->
+<p>
+ <div class="input-group input-group-lg">
+  <span class="input-group-addon" id="sizing-addon1"><strong>
+ Last Appointment Date:</strong></span>
+ 
+ <input type="text" id="disabledTextInput" class="form-control" placeholder= 
+ <%= @visit.visitdate %> disabled>
+ </div>
+</p>
+
+<p>
+  <div class="input-group input-group-lg">
+  <span class="input-group-addon" id="sizing-addon1">
+ <strong>Next Appointment Date:</strong></span>
+ <input type="text" id="disabledTextInput" class="form-control" placeholder=
+ <%= @visit.visitnextdate %> disabled>
+ </div>
+</p>
+
+
+
+<p>
+  <div class="input-group input-group-lg">
+  <span class="input-group-addon" id="sizing-addon1">
+ <strong>Issue:</strong></span>
+ <input type="text" id="disabledTextInput" class="form-control" placeholder=
+ <%= @visit.full_name1 %> <%= @visit.visitissue %> disabled>
+ </div>
+</p>
+
+
+<p>
+  <div class="input-group input-group-lg">
+  <span class="input-group-addon" id="sizing-addon1">
+ <strong>Resolution:</strong></span>
+ <input type="text" id="disabledTextInput" class="form-control" placeholder=
+ <%= @visit.visitresolution %> disabled>
+ </div>
+</p>
+
+<p>
+  <div class="input-group input-group-lg">
+  <span class="input-group-addon" id="sizing-addon1">
+ <strong>Additional Info:</strong></span>
+ <input type="text" id="disabledTextInput" class="form-control" placeholder=
+ <%= @visit.full_name3 %> <%= @visit.visitimage %> disabled>
+ </div>
+</p>
+
+<p>
+  <div class="input-group input-group-lg">
+  <span class="input-group-addon" id="sizing-addon1">
+ <strong>Doctor Name::</strong></span>
+ <input type="text" id="disabledTextInput" class="form-control" placeholder=
+ <%= @visit.visitdoctor %> disabled>
+ </div>
+</p>
+
+<p>
+  <div class="input-group input-group-lg">
+  <span class="input-group-addon" id="sizing-addon1">
+ <strong>Prescription: </strong></span>
+ <input type="text" id="disabledTextInput" class="form-control" placeholder=
+ <%= @visit.visitprescription %> disabled>
+ </div>
+</p>
+
+
+<p>
+ <div class="input-group input-group-lg">
+ <%= image_tag @visit.image.url(:medium) %>
+</div>
+</p>
+
+
+
+<!------------------------------------------------------------->
+
+
+<!-------------------BUTTONS------------------------------------>
+<td><strong><%= link_to 'Edit', edit_customer_visit_path(@visit), class: 'btn btn-primary btn-sm ' %></strong></td> | <td><strong><%= link_to 'Back', customer_path, class: 'btn btn-primary btn-sm ' %></strong></td>
+
+<!------------------------------------------------------------->
+
+
+<!-------------------PRESCRIPTION LINK-------------------------->
+<p><%= link_to "Prescription reciept", customer_visit_path(@visit, format: "pdf") , class: 'btn btn-success btn-sm ' %></p>
+<!------------------------------------------------------------->
